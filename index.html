@@ -22,28 +22,21 @@
 
     function preload() {
 
-        game.load.spritesheet('block', 'pics/block.jpeg',20,20);
-        game.load.script('filterX', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/BlurX.js');
-        game.load.script('filterY', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/BlurY.js');
-        game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
+        //game.load.spritesheet('block', 'pics/block.jpeg',20,20);
+        game.load.spritesheet('matrixfont', 'assets/pics/matrix.png', 38, 40, 94);
 
     }
 
     function create() {
-        var blurX = game.add.filter('BlurX');
-        var blurY = game.add.filter('BlurY');
-
-
-        for(var n=0; n<50; n++) {
+        for(var n=0; n<30; n++) {
 
             barre[n]=game.add.group();
-            //barre[n].filters=[blurX,blurY];
 
-            for(var i = 0; i < 18; i++) {
-                barre[n].create(1, i * 20, 'block');
+            for(var i = 0; i < 10; i++) {
+                barre[n].create(1, i * 30, 'matrixfont',game.rnd.between(1,70));
             }
-            //barre[n].setAllChildren('tint', '0xFF0000');
-            barre[n].x = 10+(n*25);
+            barre[n].setAllChildren('tint', '0x00AA00');
+            barre[n].x = 10+(n*38);
             barre[n].y = -400;
         }
 
@@ -52,11 +45,11 @@
     function update() {
     timer++;
     if(timer==4) {
-        for(var n = 0; n < 50; n++) {
+        for(var n = 0; n < 30; n++) {
             if (barre[n].y == 800) {
                 barre[n].y = -400
             }
-            barre[n].y += 20;
+            barre[n].y += 30;
         }
         timer=0;
     }
