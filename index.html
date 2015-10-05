@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>GameJam - In the matrice</title>
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var timer =0;
+
+    var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
+
+    var barre = [];
+
+    function preload() {
+
+        game.load.spritesheet('block', 'pics/block.jpeg',20,20);
+        game.load.script('filterX', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/BlurX.js');
+        game.load.script('filterY', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/BlurY.js');
+        game.load.script('filter', 'https://cdn.rawgit.com/photonstorm/phaser/master/filters/Fire.js');
+
+    }
+
+    function create() {
+        var blurX = game.add.filter('BlurX');
+        var blurY = game.add.filter('BlurY');
+
+
+        for(var n=0; n<50; n++) {
+
+            barre[n]=game.add.group();
+            //barre[n].filters=[blurX,blurY];
+
+            for(var i = 0; i < 18; i++) {
+                barre[n].create(1, i * 20, 'block');
+            }
+            //barre[n].setAllChildren('tint', '0xFF0000');
+            barre[n].x = 10+(n*25);
+            barre[n].y = -400;
+        }
+
+    }
+
+    function update() {
+    timer++;
+    if(timer==4) {
+        for(var n = 0; n < 50; n++) {
+            if (barre[n].y == 800) {
+                barre[n].y = -400
+            }
+            barre[n].y += 20;
+        }
+        timer=0;
+    }
+    }
+
+</script>
+
+</body>
+</html>
