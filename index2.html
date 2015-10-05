@@ -14,44 +14,9 @@
 
 <script type="text/javascript">
 
-
-    var MAX_LENGTH = 15;
-    var MIN_LENGTH = 4;
-
-    function Bar(column){
-        console.log('generating bar at column: ' + column);
-        this.length = 0;
-        this.speed = 0;
-        this.group = undefined;
-        this.column = column;
-
-        //itnernal
-        this.timer = 0;
-        this.generate = function() {
-            console.log(this);
-            this.speed = game.rnd.between(5,25);
-            this.length = game.rnd.between(MIN_LENGTH, MAX_LENGTH);
-            if (typeof this.group !== "undefined") {
-                console.log("Found defined group:" + this.column);
-                this.group = undefined;
-            }
-
-
-            this.group = game.add.group();
-            this.group.y = 10;
-            for(var i=0;i<this.length;i++){
-                this.group.create(1, i * 30, 'matrixfont',game.rnd.between(1,80));
-            }
-            this.group.setAllChildren('tint', '0x008800');
-            this.group.getChildAt(this.length-1).tint = '0xFFFFFF';
-            this.group.getChildAt(0).tint = "0X003300";
-            this.group.getChildAt(1).tint = "0X006600";
-        }
-    }
     var timer =0;
 
     var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
-
 
     var barre = [];
     var v_barre = [];
@@ -72,19 +37,9 @@
 //            }
 //        }
 
-        game.time.advancedTiming = true;
-        game.time.desiredFps = 60;
-        game.time.fpsMax = 60;
-        game.time.fpsMin = 40;
 
-        for(var i=0;i<30;i++){
-            barre[i] = new Bar(i);
-            barre[i].generate();
-            barre[i].group.x = 10+(i*38);
-            barre[i].group.y = 10;
-        }
-    }
-        /*for(var n=0; n<30; n++) {
+
+        for(var n=0; n<30; n++) {
 
             barre[n]=game.add.group();
             t_barre[n] = game.rnd.between(5,30);
@@ -98,19 +53,10 @@
             barre[n].y = -t_barre[n];
         }
 
-    }*/
+    }
 
     function update() {
-            for(var i=0;i< barre.length;i++){
-                if(barre[i].timer == barre[i].speed){
-                    barre[i].group.y += 30;
-                    barre[i].timer = 0;
-                } else {
-                    barre[i].timer++;
-                }
-            }
-
-    /*timer++;
+    timer++;
     if(timer==15) {
         for(var n = 0; n < 30; n++) {
             if (barre[n].y > game.height + (t_barre[n]*30)) {
@@ -121,7 +67,7 @@
             barre[n].y += v_barre[n];
         }
         timer=0;
-    }*/
+    }
    }
 
 </script>
