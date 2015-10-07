@@ -11,6 +11,6 @@
 ## Ressources
 
 * Moteur graphique - Phaser http://phaser.io/ 
-* Musique - Langlois Xavier 10:45 - 10:55 et 12:15 - 13:00 - https://revax.fr/kervax/vaxinlive.html
+* Musique - Langlois Xavier 
 * Sons - 
 * Fonts - Dafont 
