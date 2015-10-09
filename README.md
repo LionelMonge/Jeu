@@ -12,5 +12,4 @@
 
 * Moteur graphique - Phaser http://phaser.io/ 
 * Musique - Langlois Xavier 
-* Sons - 
 * Fonts - Dafont 
