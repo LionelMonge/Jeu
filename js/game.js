@@ -33,7 +33,7 @@ function Bar(column) {
         this.buggedStep = -1;
         this.isBugged = false;
         this.startDelay = game.rnd.between(60, 180);
-        var canBeBugged = (game.rnd.between(0, 1) == 0 ? false : true);
+        var canBeBugged = (game.rnd.between(0, 2) == 0 ? false : true);
         if (canBeBugged == true && crtAliveBugs < MAX_SIMULT_BUGS && totalBugsOnScreen <= 15) {
             this.buggedStep = game.rnd.between(5, 10);
             crtAliveBugs++

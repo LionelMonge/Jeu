@@ -23,13 +23,19 @@ var menuState = {
         sounds = [bgMusic, bgMusic2];
         game.sound.setDecodedCallback(sounds, start, this);
 
-        var nameLabel = game.add.text(game.world.centerX, game.world.height - 50, "Click to start!", {
+        var nameLabel = game.add.text(game.world.centerX, game.world.height - 50, "Click to start !", {
+            font: "25px Arial",
+            fill: "#00ff00",
+            align: "center"
+        });
+        var nameLabel2 = game.add.text(game.world.centerX, game.world.height - 100, "Music by Doctor Vax", {
             font: "25px Arial",
             fill: "#ffffff",
             align: "center"
         });
 
         nameLabel.anchor.setTo(0.5, 0.0);
+        nameLabel2.anchor.setTo(0.5, 0.0);
         nameLabel.inputEnabled = true;
         nameLabel.events.onInputDown.add(function(){
             game.state.start("play");
